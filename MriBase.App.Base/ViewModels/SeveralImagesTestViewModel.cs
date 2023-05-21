@@ -10,15 +10,15 @@ namespace MriBase.App.Base.ViewModels
 {
     public class SeveralImagesTestViewModel : BaseTrainingViewModel
     {
-        private IList<TrainingImageViewModel> _currentImages;
+        private IList<TrainingImageViewModel> currentImages;
 
         public IList<TrainingImageViewModel> CurrentImages
         {
-            get => _currentImages;
+            get => this.currentImages;
             set
             {
-                _currentImages = value;
-                _currentImages.Shuffle(this.Rnd);
+                this.currentImages = value;
+                this.currentImages.Shuffle(this.Rnd);
                 this.OnPropertyChanged();
             }
         }
