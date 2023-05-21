@@ -12,7 +12,7 @@ namespace MriBase.App.Base.ExtensionMethods
             var len = list.Count;
             for (var i = len - 1; i >= 1; --i)
             {
-                var j = rnd.Next(i);
+                var j = rnd.Next(i + 1);
                 list.Swap(i, j);
             }
         }

@@ -115,11 +115,11 @@ namespace MriBase.App.Base.ViewModels
 
         private void ShuffleTwoLists(IList<TrainingImageSeqLearningViewModel> list1, IList<TrainingImageSeqLearningViewModel> list2)
         {
-            for (var i = list1.Count; i > 0; i--)
+            for (var i = list1.Count - 1; i >= 1; --i)
             {
-                var index = Rnd.Next(i);
-                list1.Swap(0, index);
-                list2.Swap(0, index);
+                var j = this.Rnd.Next(i + 1);
+                list1.Swap(i, j);
+                list2.Swap(i, j);
             }
         }
 
