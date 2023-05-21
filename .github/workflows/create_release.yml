@@ -1,10 +1,7 @@
 on:
   push:
-      branches:
-        - main
-  pull_request:
-      branches: 
-        - main
+      tags:
+        - 'v[0-9]+.[0-9]+.[0-9]+'
 
 name: Create MriDogApp Android Apk Release
 
@@ -16,7 +13,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.0.0
+        uses: microsoft/setup-msbuild@v1.1
 
       - name: Build Solution
         run: msbuild ./MriBase.sln /restore /p:Configuration=Release
@@ -29,3 +26,15 @@ jobs:
         with:
           name: MriDogApp.apk
           path: MriBase.App.Dog\MriBase.App.Dog.Android\bin\Release\mribase.app.dog-Signed.apk
+          
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ref: ${{ github.event.push.ref }}
+        run: |
+          tag=${ref##*/}
+
+          gh release upload "$tag" MriDogApp.apk \
+              --repo="$GITHUB_REPOSITORY" \
+              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
+              --generate-notes
