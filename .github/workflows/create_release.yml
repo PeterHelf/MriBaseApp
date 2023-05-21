@@ -17,30 +17,4 @@ jobs:
           ref: ${{ github.event.push.ref }}
         run: |
           $tag=${ref##*/}
-          Write-Output $tag
-    
-      - uses: actions/checkout@v3
-
-      - name: Setup MSBuild
-        uses: microsoft/setup-msbuild@v1.1
-
-      - name: Build Solution
-        run: msbuild ./MriBase.sln /restore /p:Configuration=Release
-
-      - name: Create and Sign the APK
-        run: msbuild MriBase.App.Dog\MriBase.App.Dog.Android\MriBase.App.Dog.Android.csproj /t:SignAndroidPackage /p:Configuration=Release /p:OutputPath=bin\Release\
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: MriDogApp.apk
-          path: MriBase.App.Dog\MriBase.App.Dog.Android\bin\Release\mribase.app.dog-Signed.apk
-          
-      - name: Create release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ref: ${{ github.event.push.ref }}
-        run: |
-          $tag=${ref##*/}
-          Move-Item -Path .\MriBase.App.Dog\MriBase.App.Dog.Android\bin\Release\mribase.app.dog-Signed.apk -Destination .\MriDogApp.apk
-          gh release create "$tag" .\MriDogApp.apk --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
+          echo $tag
