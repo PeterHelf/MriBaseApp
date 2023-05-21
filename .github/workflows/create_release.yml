@@ -35,4 +35,4 @@ jobs:
         run: |
           $tag=${ref##*/}
           Move-Item -Path .\MriBase.App.Dog\MriBase.App.Dog.Android\bin\Release\mribase.app.dog-Signed.apk -Destination .\MriDogApp.apk
-          gh release create "$tag" MriDogApp.apk --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
+          gh release create "$tag" .\MriDogApp.apk --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
