@@ -32,6 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           ref: ${{ github.event.push.ref }}
         run: |
-          tag=${ref##*/}
+          $tag=${ref##*/}
 
           gh release upload "$tag" MriDogApp.apk --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
