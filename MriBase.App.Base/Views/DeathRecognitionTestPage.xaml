@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseTrainingPage  
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:MriBase.App.Base.Custom" 
+             xmlns:viewmodels="clr-namespace:MriBase.App.Base.ViewModels" 
+             x:DataType="viewmodels:DeathRecognitionTestViewModel"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.DeathRecognitionTestPage">
+    <views:BaseTrainingPage.TrainingContent>
+        <Grid x:Name="MainGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="{Binding RewardImage.Image}" Grid.Row="1" Grid.Column="1" x:Name="LeftImage"
+                            local:SimplePressedEffect.PressedCommand="{Binding ImageClickCommand}" 
+                            local:SimplePressedEffect.Parameter="{Binding RewardImage}" IsVisible="{Binding ImagesVisible}">
+                <Image.Effects>
+                    <local:SimplePressedEffect/>
+                </Image.Effects>
+            </Image>
+
+            <BoxView Grid.Row="0" Grid.ColumnSpan="3" Grid.RowSpan="4" BackgroundColor="White" IsVisible="{Binding HideBackground}"/>
+            
+            <BoxView Grid.Row="3" Grid.ColumnSpan="3" Grid.RowSpan="3" BackgroundColor="White"/>
+
+            <Image Source="{Binding ContinueImage.Image}" Grid.Row="4" Grid.Column="1" x:Name="RightImage"
+                            local:SimplePressedEffect.PressedCommand="{Binding ImageClickCommand}" 
+                            local:SimplePressedEffect.Parameter="{Binding ContinueImage}" IsVisible="{Binding ImagesVisible}">
+                <Image.Effects>
+                    <local:SimplePressedEffect/>
+                </Image.Effects>
+            </Image>
+        </Grid>
+    </views:BaseTrainingPage.TrainingContent>
+</views:BaseTrainingPage>

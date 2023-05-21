@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseTrainingPage  
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:MriBase.App.Base.Custom" 
+             xmlns:viewmodels="clr-namespace:MriBase.App.Base.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.SeveralImagesTestPage"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
+    <views:BaseTrainingPage.TrainingContent VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid x:Name="MainGrid" IsVisible="{Binding ImagesVisible}" IsEnabled="{Binding ImagesVisible}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <FlexLayout Grow="1" JustifyContent="SpaceAround" Wrap="Wrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BindableLayout.ItemsSource="{Binding CurrentImages}" x:Name="FlexLayout">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout FlexLayout.Basis="26%">
+                            <views:TrainingImageView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" TrainingImage="{Binding}" ImageClickCommand="{Binding Source={x:Reference FlexLayout}, Path=Parent.BindingContext.ImageClickCommand}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </Grid>
+    </views:BaseTrainingPage.TrainingContent>
+</views:BaseTrainingPage>

@@ -1,0 +1,43 @@
+﻿<views:BaseTrainingPage  
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:MriBase.App.Base.Custom"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.DeathRecognitionTraining2Page">
+    <views:BaseTrainingPage.TrainingContent>
+        <Grid x:Name="MainGrid" IsVisible="{Binding ImagesVisible}" IsEnabled="{Binding ImagesVisible}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="{Binding RewardImage.Image}" Grid.Row="1" Grid.Column="1" x:Name="LeftImage"
+                            local:SimplePressedEffect.PressedCommand="{Binding ImageClickCommand}" 
+                            local:SimplePressedEffect.Parameter="{Binding RewardImage}">
+                <Image.Effects>
+                    <local:SimplePressedEffect/>
+                </Image.Effects>
+            </Image>
+
+            <Image Source="{Binding ContinueImage.Image}" Grid.Row="3" Grid.Column="1" x:Name="RightImage"
+                            local:SimplePressedEffect.PressedCommand="{Binding ImageClickCommand}" 
+                            local:SimplePressedEffect.Parameter="{Binding ContinueImage}">
+                <Image.Effects>
+                    <local:SimplePressedEffect/>
+                </Image.Effects>
+            </Image>
+        </Grid>
+    </views:BaseTrainingPage.TrainingContent>
+</views:BaseTrainingPage>

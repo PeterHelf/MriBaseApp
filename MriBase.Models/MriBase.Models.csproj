@@ -1,0 +1,275 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\Images\barChart.png" />
+    <None Remove="Resources\Images\cdlLoginScreenImage.jpeg" />
+    <None Remove="Resources\Images\clock.png" />
+    <None Remove="Resources\Images\cog.png" />
+    <None Remove="Resources\Images\defaultBirdImage.png" />
+    <None Remove="Resources\Images\defaultDogImage.png" />
+    <None Remove="Resources\Images\infoIcon.png" />
+    <None Remove="Resources\Images\leftArrow.png" />
+    <None Remove="Resources\Images\logout.png" />
+    <None Remove="Resources\Images\pencil.png" />
+    <None Remove="Resources\Images\plusSymbol.png" />
+    <None Remove="Resources\Images\rightArrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Images\barChart.png" />
+    <EmbeddedResource Include="Resources\Images\cdlLoginScreenImage.jpeg" />
+    <EmbeddedResource Include="Resources\Images\clock.png" />
+    <EmbeddedResource Include="Resources\Images\cog.png" />
+    <EmbeddedResource Include="Resources\Images\defaultDogImage.png" />
+    <EmbeddedResource Include="Resources\Images\defaultBirdImage.png" />
+    <EmbeddedResource Include="Resources\Images\infoIcon.png" />
+    <EmbeddedResource Include="Resources\Images\leftArrow.png" />
+    <EmbeddedResource Include="Resources\Images\logout.png" />
+    <EmbeddedResource Include="Resources\Images\pencil.png" />
+    <EmbeddedResource Include="Resources\Images\plusSymbol.png" />
+    <EmbeddedResource Include="Resources\Images\rightArrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.DataAnnotations.Validation" Version="3.2.0-rc1.20223.4" />
+    <PackageReference Include="RestSharp" Version="106.11.8-alpha.0.14" />
+    <PackageReference Include="RestSharp.Serializers.NewtonsoftJson" Version="106.11.8-alpha.0.14" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="6.0.0-preview.4.21253.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\ResAudio.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResAudio.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewAbout.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewAbout.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewAnimalEdit.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewAnimalEdit.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewAnimalRegistration.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewAnimalRegistration.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewAnimalSelection.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewAnimalSelection.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewAvailableLanguages.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewAvailableLanguages.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewBasics.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewBasics.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewBluetooth.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewBluetooth.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewBluetoothSettings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewBluetoothSettings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewBreed.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewBreed.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewChangePassword.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewChangePassword.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewDailyTrainingCreation.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewDailyTrainingCreation.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewDailyTrainings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewDailyTrainings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewGender.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewGender.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewGroupOption.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewGroupOption.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewLogin.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewLogin.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewPasswordForgotten.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewPasswordForgotten.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewRegistration.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewRegistration.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewSettings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewSettings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewStatisticDetails.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewStatisticDetails.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewStatistics.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewStatistics.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewStatisticsAndTraining.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewStatisticsAndTraining.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewTrainings.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewTrainings.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewTrainingType.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewTrainingType.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\ResViewUserEdit.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ResViewUserEdit.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ResAudio.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResAudio.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewAbout.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewAbout.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewAnimalEdit.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewAnimalEdit.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewAnimalRegistration.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewAnimalRegistration.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewAnimalSelection.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewAnimalSelection.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewAvailableLanguages.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewAvailableLanguages.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewBasics.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewBasics.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewBluetooth.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewBluetooth.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewBluetoothSettings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewBluetoothSettings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewBreed.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewBreed.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewChangePassword.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewChangePassword.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewDailyTrainingCreation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewDailyTrainingCreation.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewDailyTrainings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewDailyTrainings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewGender.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewGender.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewGroupOption.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewGroupOption.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewLogin.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewLogin.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewPasswordForgotten.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewPasswordForgotten.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewRegistration.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewRegistration.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewSettings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewSettings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewStatisticDetails.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewStatisticDetails.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewStatistics.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewStatistics.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewStatisticsAndTraining.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewStatisticsAndTraining.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewTrainings.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewTrainings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewTrainingType.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewTrainingType.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\ResViewUserEdit.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ResViewUserEdit.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

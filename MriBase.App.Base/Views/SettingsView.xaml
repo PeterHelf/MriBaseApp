@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translate="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.SettingsView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+      <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="Center">
+            <Button Text="{translate:Translate ResViewSettings_Language}" Margin="10" x:Name="LanguageButton" x:FieldModifier="public" Command="{Binding LanguageButtonCommand}"/>
+            <Button Text="{translate:Translate ResViewSettings_Volume}" Margin="10" x:Name="VolumeButton" x:FieldModifier="public" Command="{Binding VolumeButtonCommand}"/>
+            <Button Text="{translate:Translate ResViewSettings_DailyTrainings}" Margin="10" x:Name="DailyTrainingsButton" x:FieldModifier="public" Command="{Binding DailyTrainingsButtonCommand}"/>
+            <Button Text="Calibrate Touchscreen" Margin="10" x:Name="TouchscreenCalibrationButton" x:FieldModifier="public" Command="{Binding TouchscreenCalibrationButtonCommand}"/>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

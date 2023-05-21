@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:AnimalRegistrationPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             xmlns:views="clr-namespace:MriBase.App.Base.Views;assembly=MriBase.App.Base" 
+             xmlns:custom="clr-namespace:MriBase.App.Base.Custom;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Dog.Views.AnimalRegistrationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,-2,0,-2"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Label Text="{translation:Translate ResViewAnimalRegistration_Profile}" FontSize="Title" FontAttributes="Bold"/>
+                    <Image HeightRequest="100" BackgroundColor="Transparent" Source="{Binding AnimalImage}"/>
+                    <Button Text="{translation:Translate ResViewAnimalRegistration_ChangeProfilePicture}" HeightRequest="40" HorizontalOptions="Center" Command="{Binding ChangeAnimalImageCommand}"/>
+                    <Label Text="{translation:Translate ResViewAnimalRegistration_NameOfAnimal}"/>
+                    <Entry Text="{Binding Name}" Placeholder="{translation:Translate ResViewAnimalRegistration_Name}" HorizontalOptions="Fill"/>
+                    <Label Text="{translation:Translate ResViewAnimalRegistration_DateOfBirth}"/>
+                    <DatePicker MinimumDate="{Binding MinDate}"
+                                MaximumDate="{Binding MaxDate}"
+                                Date="{Binding SelectedDate}" TabIndex="1"/>
+                    <Label Text="{translation:Translate ResViewAnimalRegistration_BreedOfAnimal}"/>
+                    <!--TODO: Lösung nur für Android&iOS, nicht für UWP-->
+                    <custom:CustomXfxComboBox x:Name="BreedSelector"
+                                     Placeholder="{translation:Translate ResViewAnimalRegistration_Breed}"
+                                     ItemsSource="{Binding BreedStrings}"
+                                     SortingAlgorithm="{Binding SortingAlgorithm}"
+                                     Unfocused="BreedSelectorOnUnfocused"
+                                     ItemSelected="BreedSelectorItemSelected"/>
+                    <Label Text="{translation:Translate ResViewAnimalRegistration_GenderOfAnimal}"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Button Text="{translation:Translate ResViewAnimalRegistration_Female}" HeightRequest="40" Command="{Binding SetFemaleCommand}" Clicked="Button_OnClicked" x:Name="FemaleButton" Margin="10,10,20,10"/>
+                        <Button Text="{translation:Translate ResViewAnimalRegistration_Male}" HeightRequest="40" Command="{Binding SetMaleCommand}" Clicked="Button_OnClicked" x:Name="MaleButton" Margin="20,10,10,10"/>
+                    </StackLayout>
+                    <Button Text="{translation:Translate ResViewAnimalRegistration_Save}" Command="{Binding SaveCommand}" BackgroundColor="Green"/>
+                </StackLayout>
+                
+                <views:BusyIndicatorView Grid.ColumnSpan="3" IsVisible="{Binding IsBusy}" IsBusy="{Binding IsBusy}" BusyText="{Binding BusyText}"/>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</views:AnimalRegistrationPageBase>

@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base" 
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.LoginPage"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False"
+             IsBusy="{Binding IsBusy}"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="true">
+    <ContentPage.Content>        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Text="{translation:Translate ResViewLogin_LoginTitle}" FontSize="55" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" />
+            <Image Grid.Column="1" Grid.Row="1" Source="{Binding Image}" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="{Binding ImageVisible}"/>
+            <Label Grid.Column="1" Grid.Row="2" Text="{Binding LoginErrorMessage}" TextColor="DarkRed" IsVisible="{Binding LoginErrorVisible}"/>
+            <Entry Grid.Column="1" Grid.Row="3" Placeholder="{translation:Translate ResViewLogin_UserName}" Text="{Binding UserName}"/>
+            <Entry Grid.Column="1" Grid.Row="4" IsPassword="True" Placeholder="{translation:Translate ResViewLogin_Password}" Text="{Binding Password}"/>
+            <Grid Grid.Column="1" Grid.Row="5" ColumnDefinitions="*,*">
+                <StackLayout Grid.Column="0" Orientation="Horizontal" HorizontalOptions="Start">
+                    <CheckBox IsChecked="{Binding StayLogedIn}" Color="Green" HorizontalOptions="Center"/>
+                    <Label Text="{translation:Translate ResViewLogin_StayLogedIn}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                </StackLayout>
+                
+                <Label Grid.Column="1" HorizontalOptions="End"
+                    VerticalOptions="CenterAndExpand">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{translation:Translate ResViewLogin_PasswordForgotten}"
+                                TextColor="Blue"
+                                TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PasswordForgottenCommand}" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+            <Button Grid.Column="1" Grid.Row="6" BackgroundColor="Green" Text="Login" Command="{Binding LoginCommand}"/>
+
+            <StackLayout Grid.Column="1" Grid.Row="8" Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="{translation:Translate ResViewLogin_NotRegistered}"/>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{translation:Translate ResViewLogin_Register}"
+                                TextColor="Blue"
+                                TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding RegistrationPageCommand}" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <Button Grid.Column="1" Grid.Row="9" BackgroundColor="DarkGreen" Text="Demo-Login" Command="{Binding DemoLoginCommand}" Margin="0,0,0,10"/>
+            <views:BusyIndicatorView Grid.ColumnSpan="3" Grid.RowSpan="11" IsVisible="{Binding IsBusy}" IsBusy="{Binding IsBusy}" BusyText="{Binding BusyText}"/>            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

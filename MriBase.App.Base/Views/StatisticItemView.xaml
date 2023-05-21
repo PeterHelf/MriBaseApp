@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base" 
+             x:Class="MriBase.App.Base.Views.StatisticItemView">
+  <ContentView.Content>
+        <StackLayout HorizontalOptions="StartAndExpand">
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewStatistics_AmountPlayed}"/>
+                        <Span Text="{Binding Statistic.TimesPlayed}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label IsVisible="{Binding ErrorIsPossible}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewStatistics_NumberOfErrors}"/>
+                        <Span Text="{Binding Statistic.NumberOfErrors}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label IsVisible="{Binding ErrorIsPossible}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewStatistics_BestResult}"/>
+                        <Span Text="{Binding Statistic.BestResult}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewStatistics_DurationOfTraining}"/>
+                        <Span Text="{Binding Statistic.DurationOfTraining}" />
+                        <Span Text=" " />
+                        <Span Text="{translation:Translate ResViewStatistics_Seconds}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

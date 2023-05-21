@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base" 
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.AnimalSelectionPage"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                <Label Text="{Binding AnimalListHeaderText}" FontSize="Title" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,30,0,0"/>
+                <ScrollView Padding="0,10,0,30">
+                    <FlexLayout x:Name="AnimalList" Grow="5" JustifyContent="Center" Wrap="Wrap" BindableLayout.ItemsSource="{Binding AnimalViewModels}" HorizontalOptions="Center" VerticalOptions="Center">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout HorizontalOptions="Center" Margin="5" HeightRequest="230">
+                                    <Image Source="{Binding Image}" Aspect="AspectFit" HeightRequest="200" WidthRequest="200"/>
+                                    <Label Text="{Binding Name}" HorizontalOptions="Center"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer NumberOfTapsRequired="1" Command="{Binding Source={x:Reference AnimalList}, Path=Parent.BindingContext.SelectAnimalCommand}" CommandParameter="{Binding}"/>
+                                    </StackLayout.GestureRecognizers>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
+                </ScrollView>
+            </StackLayout>
+            <views:BusyIndicatorView IsVisible="{Binding IsBusy}" IsBusy="{Binding IsBusy}" BusyText="{Binding BusyText}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

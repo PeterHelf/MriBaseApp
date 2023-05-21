@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.SettingsPhoneView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="2" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+      <ScrollView>
+            <StackLayout Margin="20,0,20,0">
+                <Label Text="{translation:Translate ResViewSettings_UserProfile}" FontSize="Medium" HorizontalOptions="Center"/>
+                <Button Text="{translation:Translate ResViewSettings_EditUserProfile}" HorizontalOptions="Fill" Command="{Binding EditUserCommand}"/>
+                <Label Text="{translation:Translate ResViewSettings_AnimalProfile}" FontSize="Medium" HorizontalOptions="Center"/>
+                <Button Text="{translation:Translate ResViewSettings_EditAnimalProfile}" HorizontalOptions="Fill" Command="{Binding EditAnimalCommand}"/>
+                <Button Text="{translation:Translate ResViewSettings_AddAnimal}" HorizontalOptions="Fill" Command="{Binding AddAnimalCommand}"/>
+                <Button Text="{translation:Translate ResViewSettings_AnimalSelection}" HorizontalOptions="Fill" Command="{Binding AnimalSelectionCommand}"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                    <Button Text="{translation:Translate ResViewSettings_Language}" HorizontalOptions="FillAndExpand" Command="{Binding LanguageCommand}"/>
+                    <Button Text="{translation:Translate ResViewSettings_Volume}" HorizontalOptions="FillAndExpand" Command="{Binding VolumeCommand}"/>
+                </StackLayout>
+                <Label Text="{translation:Translate ResViewSettings_DataTransmission}" FontSize="Medium" HorizontalOptions="Center"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Label Text="{translation:Translate ResViewSettings_DataTransmissionAllowed}" HorizontalOptions="Center" VerticalOptions="Center"/>
+                    <Switch IsToggled="{Binding SendData}" OnColor="Green" ThumbColor="Green" HorizontalOptions="Center"/>
+                </StackLayout>
+                <Label Text="{translation:Translate ResViewSettings_Feedback}" FontSize="Medium" HorizontalOptions="Center"/>
+                <Button Text="{translation:Translate ResViewSettings_FAQ}" HorizontalOptions="Fill" Command="{Binding FAQCommand}"/>
+                <Button Text="{translation:Translate ResViewSettings_AboutUs}" HorizontalOptions="Fill" Command="{Binding AboutUsCommand}"/>
+
+                <Button Text="{translation:Translate ResViewSettings_Logout}" HorizontalOptions="Fill" Command="{Binding LogOutCommand}"/>
+            </StackLayout>
+      </ScrollView>
+    </ContentView.Content>
+</ContentView>

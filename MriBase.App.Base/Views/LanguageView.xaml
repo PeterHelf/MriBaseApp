@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="clr-namespace:MriBase.App.Base.Converter;assembly=MriBase.App.Base"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.LanguageView">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="20" />
+            </Style>
+            <conv:EnumLanguageConverter x:Key="EnumLanguageConverter" />
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" x:Name="LanguageList">
+            <ScrollView>
+                <StackLayout BindableLayout.ItemsSource="{Binding Languages}" VerticalOptions="Center">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <Button Text="{Binding ., Converter={StaticResource EnumLanguageConverter}}" Command="{Binding Source={x:Reference LanguageList}, Path=Parent.BindingContext.LanguageSelectionCommand}" CommandParameter="{Binding}"/>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+        </ScrollView>
+    </ContentView.Content>
+</ContentView>

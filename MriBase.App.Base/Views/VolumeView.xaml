@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.VolumeView">
+  <ContentView.Content>
+        <StackLayout HorizontalOptions="Fill">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Fill" HorizontalOptions="Fill">
+                <Label Text="{translation:Translate ResViewSettings_Tone}" Margin="30" VerticalTextAlignment="Center" FontSize="Medium"/>
+                <Slider Minimum="0" Maximum="1" Value="{Binding Volume}" VerticalOptions="Center" HorizontalOptions="FillAndExpand" MaximumTrackColor="Black" MinimumTrackColor="Black"/>
+            </StackLayout>
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>

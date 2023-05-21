@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseTrainingPage     
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"         
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MriBase.App.Base.Custom" xmlns:viewmodels="clr-namespace:MriBase.App.Base.ViewModels" x:DataType="viewmodels:EntireTouchscreenTrainingViewModel"
+    x:Class="MriBase.App.Base.Views.EntireTouchscreenTrainingPage"    >
+    <views:BaseTrainingPage.TrainingContent VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <Grid x:Name="MainGrid" IsVisible="{Binding ImagesVisible}" IsEnabled="{Binding ImagesVisible}" BackgroundColor="{Binding ScreenColor}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" local:SimplePressedEffect.PressedCommand="{Binding TouchscreenClickCommand}">
+            <Grid.Effects>
+                <local:SimplePressedEffect/>
+            </Grid.Effects>
+        </Grid>
+    </views:BaseTrainingPage.TrainingContent>
+</views:BaseTrainingPage>

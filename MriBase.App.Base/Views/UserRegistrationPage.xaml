@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base" xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.UserRegistrationPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="1" HorizontalOptions="Fill" VerticalOptions="Center">
+                <Label Text="{translation:Translate ResViewRegistration_Registration}" HorizontalOptions="Center" FontSize="Title" FontAttributes="Bold"/>
+                <Entry Text="{Binding Username}" Placeholder="{translation:Translate ResViewRegistration_Username}"/>
+                <Entry Text="{Binding Password}" IsPassword="True" Placeholder="{translation:Translate ResViewRegistration_Password}"/>
+                <Entry Text="{Binding PasswordRepeated}" IsPassword="True" Placeholder="{translation:Translate ResViewRegistration_RepeatPassword}"/>
+                <Entry Text="{Binding Email}" Placeholder="{translation:Translate ResViewRegistration_Email}" Keyboard="Email"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <CheckBox IsChecked="{Binding TermsAndConditionsAccepted}" Color="Green"/>
+                    <Label VerticalOptions="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{translation:Translate ResViewRegistration_TermsStatement1}"/>
+                                <Span Text="{translation:Translate ResViewRegistration_TermsStatement2}"
+                                      TextColor="Blue"
+                                      TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding DataProtectionCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text="{translation:Translate ResViewRegistration_TermsStatement3}"/>
+                                <Span Text="{translation:Translate ResViewRegistration_TermsStatement4}"
+                                      TextColor="Blue"
+                                      TextDecorations="Underline">
+                                    <Span.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding TermsOfServiceCommand}" />
+                                    </Span.GestureRecognizers>
+                                </Span>
+                                <Span Text="{translation:Translate ResViewRegistration_TermsStatement5}"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                </StackLayout>
+                <Button Text="{translation:Translate ResViewRegistration_Register}" Command="{Binding RegisterCommand}" BackgroundColor="Green"/>
+            </StackLayout>
+            
+            <views:BusyIndicatorView Grid.ColumnSpan="3" IsVisible="{Binding IsBusy}" IsBusy="{Binding IsBusy}" BusyText="{Binding BusyText}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

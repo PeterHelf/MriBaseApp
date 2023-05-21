@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base" 
+    xmlns:views="clr-namespace:MriBase.App.Base.Views" 
+    xmlns:conv="clr-namespace:MriBase.App.Base.Converter"
+    x:Class="MriBase.App.Base.Views.TrainingStatisticDetailsPage"
+    Title="{Binding StatisticVm.Statistic.Name}">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <conv:BoolToOpacityConverter x:Key="BoolToOpacityConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <Grid>
+        <ScrollView>
+            <StackLayout Spacing="10">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Fill" Margin="10">
+                    <Label Text="{translation:Translate ResViewStatisticDetails_SelectedGroupingMethod}" FontSize="Large" VerticalTextAlignment="Center"/>
+                    <Picker x:Name="groupingPicker" ItemsSource="{Binding GroupOptions}" SelectedItem="{Binding SelectedGroupOption}" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding YearSelectionVisible}" Orientation="Horizontal" Margin="25,15,25,5" HorizontalOptions="Fill">
+                    <ImageButton Source="{Binding LeftArrowImageSource}" Command="{Binding SubtractYearCommand}" Opacity="{Binding SubtractYearCommand.CanExecuteProperty, Converter={StaticResource BoolToOpacityConverter}}" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="15"/>
+                    <Label Text="{Binding Year}" FontSize="Medium" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <ImageButton Source="{Binding RightArrowImageSource}" Command="{Binding AddYearCommand}"  Opacity="{Binding AddYearCommand.CanExecuteProperty, Converter={StaticResource BoolToOpacityConverter}}" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="15"/>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding MonthSelectionVisible}" Orientation="Horizontal" Margin="25,15,25,5" HorizontalOptions="Fill">
+                    <ImageButton Source="{Binding LeftArrowImageSource}" Command="{Binding SubtractMonthCommand}" Opacity="{Binding SubtractMonthCommand.CanExecuteProperty, Converter={StaticResource BoolToOpacityConverter}}" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="15"/>
+                    <Label Text="{Binding Month}" FontSize="Medium" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <ImageButton Source="{Binding RightArrowImageSource}" Command="{Binding AddMonthCommand}" Opacity="{Binding AddMonthCommand.CanExecuteProperty, Converter={StaticResource BoolToOpacityConverter}}" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="15"/>
+                </StackLayout>
+                <StackLayout IsVisible="{Binding DaySelectionVisible}" Orientation="Horizontal" Margin="25,15,25,5" HorizontalOptions="Fill">
+                    <ImageButton Source="{Binding LeftArrowImageSource}" Command="{Binding SubtractDayCommand}" Opacity="{Binding SubtractDayCommand.CanExecuteProperty, Converter={StaticResource BoolToOpacityConverter}}" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="15"/>
+                    <Label Text="{Binding Day}" FontSize="Medium" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                    <ImageButton Source="{Binding RightArrowImageSource}" Command="{Binding AddDayCommand}" Opacity="{Binding AddDayCommand.CanExecuteProperty, Converter={StaticResource BoolToOpacityConverter}}" BackgroundColor="Transparent" HeightRequest="20" WidthRequest="15"/>
+                </StackLayout>
+                <Label IsVisible="{Binding StatisticVm.ErrorIsPossible}" Text="{translation:Translate ResViewStatisticDetails_AverageMistakes}" FontSize="Large" Margin="10,0,0,0"/>
+                <microcharts:ChartView IsVisible="{Binding StatisticVm.ErrorIsPossible}" x:Name="chart1" Margin="5,0,5,5" BackgroundColor="White"/>
+                <Label Text="{translation:Translate ResViewStatisticDetails_AverageDuration}" FontSize="Large" Margin="10,0,0,0"/>
+                <microcharts:ChartView x:Name="chart2" Margin="5,0,5,5" BackgroundColor="White"/>
+            </StackLayout>
+        </ScrollView>
+        <views:BusyIndicatorView Grid.Row="0" IsVisible="{Binding IsBusy}" IsBusy="{Binding IsBusy}" BusyText="{Binding BusyText}"/>
+    </Grid>    
+</ContentPage>

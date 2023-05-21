@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MriBase.App.Base.Views.BluetoothSettingsPage"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base">
+    <ContentPage.Resources>
+        <ResourceDictionary Source="../Resources/DefaultThemeColors.xaml" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid x:Name="grid" RowDefinitions="*,7*,*" ColumnDefinitions="*,*,*,*" Padding="10,0,10,0">
+            <Frame Grid.Row="1" Grid.Column="0" BackgroundColor="{DynamicResource VeryLightGray}">
+                <Grid RowDefinitions="*,5*,Auto">
+                    <Label Grid.Row="0" Text="{translation:Translate ResViewBluetoothSettings_FeederNames}" FontSize="Title" HorizontalTextAlignment="Center"/>
+                    <Frame Grid.Row="1">
+                        <CollectionView ItemsSource="{Binding FeederNames}" VerticalScrollBarVisibility="Always" HorizontalOptions="FillAndExpand">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem Text="Delete"
+                                               BackgroundColor="{DynamicResource PrimaryColor}"
+                                               Command="{Binding Source={x:Reference grid}, Path=BindingContext.DeleteFeederName}"
+                                               CommandParameter="{Binding}" />
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+                                        <Grid Margin="5" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="{Binding}"/>
+                                        </Grid>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <Button Grid.Row="2" Text="{translation:Translate ResViewBluetoothSettings_Add}" HorizontalOptions="End" Command="{Binding AddFeederName}"/>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="1" BackgroundColor="{DynamicResource VeryLightGray}">
+                <Grid RowDefinitions="*,5*,Auto">
+                    <Label Grid.Row="0" Text="{translation:Translate ResViewBluetoothSettings_FeederServices}" FontSize="Title" HorizontalTextAlignment="Center"/>
+                    <Frame Grid.Row="1">
+                        <CollectionView ItemsSource="{Binding FeederServiceUIDs}" VerticalScrollBarVisibility="Always" HorizontalOptions="CenterAndExpand">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem Text="Delete"
+                                               BackgroundColor="{DynamicResource PrimaryColor}"
+                                               Command="{Binding Source={x:Reference grid}, Path=BindingContext.DeleteServiceGUID}"
+                                               CommandParameter="{Binding}" />
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+                                        <Grid Margin="5" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="{Binding}"/>
+                                        </Grid>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <Button Grid.Row="2" Text="{translation:Translate ResViewBluetoothSettings_Add}" HorizontalOptions="End" Command="{Binding AddServiceGUID}"/>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="2" BackgroundColor="{DynamicResource VeryLightGray}">
+                <Grid RowDefinitions="*,5*,Auto">
+                    <Label Grid.Row="0" Text="{translation:Translate ResViewBluetoothSettings_FeederReadCharacteristics}" FontSize="Title" HorizontalTextAlignment="Center"/>
+                    <Frame Grid.Row="1">
+                        <CollectionView ItemsSource="{Binding FeederReadCharacteristicIds}" VerticalScrollBarVisibility="Always" HorizontalOptions="CenterAndExpand">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem Text="Delete"
+                                               BackgroundColor="{DynamicResource PrimaryColor}"
+                                               Command="{Binding Source={x:Reference grid}, Path=BindingContext.DeleteReadCharacteristicGUID}"
+                                               CommandParameter="{Binding}" />
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+                                        <Grid Margin="5" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="{Binding}"/>
+                                        </Grid>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <Button Grid.Row="2" Text="{translation:Translate ResViewBluetoothSettings_Add}" HorizontalOptions="End" Command="{Binding AddReadCharacteristicGUID}"/>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="1" Grid.Column="3" BackgroundColor="{DynamicResource VeryLightGray}">
+                <Grid RowDefinitions="*,5*,Auto">
+                    <Label Grid.Row="0" Text="{translation:Translate ResViewBluetoothSettings_FeederWriteCharacteristics}" FontSize="Title" HorizontalTextAlignment="Center"/>
+                    <Frame Grid.Row="1">
+                        <CollectionView ItemsSource="{Binding FeederWriteCharacteristicIds}" VerticalScrollBarVisibility="Always" HorizontalOptions="CenterAndExpand">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <SwipeView>
+                                        <SwipeView.RightItems>
+                                            <SwipeItems>
+                                                <SwipeItem Text="Delete"
+                                               BackgroundColor="{DynamicResource PrimaryColor}"
+                                               Command="{Binding Source={x:Reference grid}, Path=BindingContext.DeleteWriteCharacteristicGUID}"
+                                               CommandParameter="{Binding}" />
+                                            </SwipeItems>
+                                        </SwipeView.RightItems>
+                                        <Grid Margin="5" HorizontalOptions="CenterAndExpand">
+                                            <Label Text="{Binding}"/>
+                                        </Grid>
+                                    </SwipeView>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </Frame>
+                    <Button Grid.Row="2" Text="{translation:Translate ResViewBluetoothSettings_Add}" HorizontalOptions="End" Command="{Binding AddWriteCharacteristicGUID}"/>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

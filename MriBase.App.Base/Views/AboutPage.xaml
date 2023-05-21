@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.AboutPage">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{translation:Translate ResViewAbout_AboutUs}" FontAttributes="Bold" FontSize="40"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+            <BoxView BackgroundColor="Transparent" WidthRequest="50" HeightRequest="50"/>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="BorderColor" Value="Black" />
+                <Setter Property="BorderWidth" Value="2" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="20" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="1" Grid.Column="1" VerticalOptions="Center" >
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Fill">
+                    <Button Text="{translation:Translate ResViewAbout_AppName}" Command="{Binding AppInfoCommand}"/>
+                    <Button Text="{translation:Translate ResViewAbout_DataProtection}" Command="{Binding DataProtectionCommand}"/>
+                    <Button Text="{translation:Translate ResViewAbout_DataTransmission}" Command="{Binding DataTransmissionCommand}"/>
+                    <Button Text="{translation:Translate ResViewAbout_Imprint}" Command="{Binding ImprintCommand}"/>
+                    <Button Text="{translation:Translate ResViewAbout_TermsOfUse}" Command="{Binding TermsOfUseCommand}"/>
+                </StackLayout>
+            </ScrollView>
+
+            <BoxView Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1" Color="Black" Margin="0,30,0,10"/>
+            <Button Grid.Column="2" Grid.Row="2" Text="{translation:Translate ResViewAbout_Back}" BackgroundColor="Green" Grid.ColumnSpan="2" HorizontalOptions="Center" VerticalOptions="Center" Margin="30" Padding="0" Command="{Binding BackCommand}"/>
+
+            <StackLayout Grid.Row="1" Grid.Column="3" Grid.ColumnSpan="3" Margin="25">
+                <Label Text="{Binding Title}" FontSize="Title" FontAttributes="Bold"/>
+                <Label Text="{Binding Text}" FontSize="Medium"/>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

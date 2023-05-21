@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MriBase.App.Base.Views.AnimalListView"
+             xmlns:icon="clr-namespace:MriBase.App.Base.Icon;assembly=MriBase.App.Base">
+  <ContentView.Content>
+        <Frame
+                x:Name="popuplayout"
+                HasShadow="True"
+                BorderColor="Black">
+
+            <StackLayout x:Name="AnimalList" BindableLayout.ItemsSource="{Binding Animals}" HorizontalOptions="Center" VerticalOptions="Center">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid ColumnDefinitions="Auto,*,Auto" RowDefinitions="*,Auto">
+                            <Image Grid.Column="0" Source="{Binding Image}" Aspect="AspectFill" HeightRequest="30" WidthRequest="30"/>
+                            <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" HorizontalOptions="Center"/>
+                            <ImageButton Grid.Column="2" Source="{icon:Icon pencil}" Command="{Binding Source={x:Reference AnimalList}, Path=Parent.BindingContext.EditAnimalCommand}" CommandParameter="{Binding}" VerticalOptions="Center" HeightRequest="15" WidthRequest="15"/>
+                            <BoxView Grid.ColumnSpan="3" Grid.Row="1" VerticalOptions="Center" HorizontalOptions="Fill" HeightRequest="1" Color="Black"/>
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding Source={x:Reference AnimalList}, Path=Parent.BindingContext.SelectAnimalCommand}" CommandParameter="{Binding}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>

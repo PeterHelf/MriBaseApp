@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseTrainingPage  
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:MriBase.App.Base.Custom" xmlns:viewmodels="clr-namespace:MriBase.App.Base.ViewModels" x:DataType="viewmodels:TwoImagesTestViewModel"
+    mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.TwoImagesTestPage">
+    <views:BaseTrainingPage.TrainingContent>
+        <Grid x:Name="MainGrid" IsVisible="{Binding ImagesVisible}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <views:TrainingImageView Grid.Row="1" Grid.Column="1" TrainingImage="{Binding LeftImage}" ImageClickCommand="{Binding ImageClickCommand}"/>
+            <views:TrainingImageView Grid.Row="1" Grid.Column="3" TrainingImage="{Binding RightImage}" ImageClickCommand="{Binding ImageClickCommand}"/>
+        </Grid>
+    </views:BaseTrainingPage.TrainingContent>
+</views:BaseTrainingPage>

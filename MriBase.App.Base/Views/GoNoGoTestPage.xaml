@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseTrainingPage  
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:local="clr-namespace:MriBase.App.Base.Custom"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.GoNoGoTestPage">
+    <views:BaseTrainingPage.TrainingContent>
+        <Grid x:Name="MainGrid" IsVisible="{Binding ImagesVisible}" IsEnabled="{Binding ImagesVisible}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <FlexLayout Grow="1" JustifyContent="SpaceAround" Wrap="Wrap" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" BindableLayout.ItemsSource="{Binding CurrentImages}" x:Name="FlexLayout">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout FlexLayout.Basis="26%" Padding="20"
+                            local:SimplePressedEffect.PressedCommand="{Binding Source={x:Reference FlexLayout}, Path=Parent.BindingContext.ImageClickCommand}" 
+                            local:SimplePressedEffect.Parameter="{Binding}">
+                            <Image Source="{Binding Image}" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+
+                            <StackLayout.Effects>
+                                <local:SimplePressedEffect/>
+                            </StackLayout.Effects>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </FlexLayout>
+        </Grid>
+    </views:BaseTrainingPage.TrainingContent>
+</views:BaseTrainingPage>

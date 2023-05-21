@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.DailyTrainingsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="{Binding InfoIcon}" Text="Info" Clicked="InfoButtonClicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ListView ItemsSource="{Binding ActiveDailyTrainings}" SeparatorColor="Gray" SelectionMode="None" VerticalOptions="Fill" x:Name="TrainingList">
+                <ListView.Header>
+                    <Label Text="{translation:Translate ResViewDailyTrainings_ActiveTrainings}" HorizontalTextAlignment="Center" FontSize="Title"></Label>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{translation:Translate ResViewDailyTrainings_StartTime}"/>
+                                            <Span Text="{Binding StartTime}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <BoxView Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{translation:Translate ResViewDailyTrainings_MinDuration}"/>
+                                            <Span Text="{Binding MinDuration}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <BoxView Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{translation:Translate ResViewDailyTrainings_MaxDuration}"/>
+                                            <Span Text="{Binding MaxDuration}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <BoxView Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
+                                <Label>
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{translation:Translate ResViewDailyTrainings_AnimalName}"/>
+                                            <Span Text="{Binding AnimalName}" />
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <BoxView Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
+                                <Label IsVisible="{Binding AnyTraining}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{translation:Translate ResViewDailyTrainings_Training}"/>
+                                            <Span Text="{translation:Translate ResViewDailyTrainings_AnyTraining}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Button Command="{Binding Source={x:Reference TrainingList}, Path=Parent.BindingContext.DeleteTrainingCommand}" CommandParameter="{Binding}" Text="{translation:Translate ResViewDailyTrainings_Delete}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Grid.Row="1" Command="{Binding CreateNewTrainingCommand}" Text="{translation:Translate ResViewDailyTrainings_AddTraining}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:viewModels="clr-namespace:MriBase.App.Base.ViewModels"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.BusyIndicatorView">
+    <ContentView.Content>
+        <Grid
+                BackgroundColor="SlateGray"
+                IsVisible="{Binding IsBusy}"
+                Opacity="0.7">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <ActivityIndicator
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding IsBusy}"
+                    VerticalOptions="Center"
+                    WidthRequest="150"
+                    Color="White" />
+                <Label TextColor="Black" VerticalOptions="Center" Text="{Binding BusyText}" FontSize="Title" HorizontalTextAlignment="Center"/>
+            </StackLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:conv="clr-namespace:MriBase.App.Base.Converter"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base" 
+             x:Class="MriBase.App.Base.Views.BluetoothTrainingPage">
+    <ContentPage.Resources>
+        <conv:BoolToInvisibleConverter x:Key="BoolToInvisibleConverter" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="Center">
+            <StackLayout.Resources>
+                <ResourceDictionary>
+                    <Style TargetType="Label">
+                        <Setter Property="Margin" Value="20" />
+                        <Setter Property="VerticalOptions" Value="Center" />
+                        <Setter Property="HorizontalOptions" Value="Center" />
+                        <Setter Property="VerticalTextAlignment" Value="Center" />
+                        <Setter Property="HorizontalTextAlignment" Value="Center" />
+                        <Setter Property="FontSize" Value="Large" />
+                    </Style>
+                </ResourceDictionary>
+            </StackLayout.Resources>
+
+            <Label Text="{Binding TrainingName}" FontSize="Title" FontAttributes="Bold"/>
+
+            <Label Text="{translation:Translate ResViewBluetooth_SessionEnded}" IsVisible="{Binding SessionEnded}"/>
+
+            <Label IsVisible="{Binding LastTrialCorrect}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_LastTrialCorrect}" TextColor="Green"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label IsVisible="{Binding LastTrialIncorrect}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_LastTrialIncorrect}" TextColor="Red"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label IsVisible="{Binding NoResults}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_NoResults}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label IsVisible="{Binding IsInCorrectiontrial}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_InCorrectionTrial}" TextColor="Red"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label IsVisible="{Binding SessionEnded, Converter={StaticResource BoolToInvisibleConverter}}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_TrialNumber}"/>
+                        <Span Text="{Binding TrialNr}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label IsVisible="{Binding SessionEnded, Converter={StaticResource BoolToInvisibleConverter}}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_LastTrialDuration}"/>
+                        <Span Text="{Binding LastTrialDuration}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_TotalErrors}"/>
+                        <Span Text="{Binding TotalErrors}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_TotalCorrect}"/>
+                        <Span Text="{Binding TotalCorrect}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            
+            <Label IsVisible="{Binding SessionEnded}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translation:Translate ResViewBluetooth_SessionDuration}"/>
+                        <Span Text="{Binding TotalDuration}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MriBase.App.Base.Views.TouchscreenCalibrationPage"
+             xmlns:local="clr-namespace:MriBase.App.Base.Custom"
+             NavigationPage.HasBackButton="False"
+             NavigationPage.HasNavigationBar="False">
+    <Grid>
+        <Image x:Name="image"
+           Aspect="Fill" RotationX="180"/>
+
+        <Grid.Effects>
+            <local:TouchEffectWithCoordinates TouchAction="OnTouchEffectAction"/>
+        </Grid.Effects>
+    </Grid>
+</ContentPage>

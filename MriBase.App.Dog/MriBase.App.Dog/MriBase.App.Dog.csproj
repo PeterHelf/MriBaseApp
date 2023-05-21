@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="TrainingJsons\Entire Touchscreen.json" />
+    <None Remove="TrainingJsons\Go-NoGo.json" />
+    <None Remove="TrainingJsons\Matching to Sample.json" />
+    <None Remove="TrainingJsons\One Image.json" />
+    <None Remove="TrainingJsons\Random Position.json" />
+    <None Remove="TrainingJsons\Sequential Learning.json" />
+    <None Remove="TrainingJsons\Several Images.json" />
+    <None Remove="TrainingJsons\Two Images.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainingJsons\Entire Touchscreen.json" />
+    <EmbeddedResource Include="TrainingJsons\Go-NoGo.json" />
+    <EmbeddedResource Include="TrainingJsons\Matching to Sample.json" />
+    <EmbeddedResource Include="TrainingJsons\One Image.json" />
+    <EmbeddedResource Include="TrainingJsons\Random Position.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainingJsons\Sequential Learning.json" />
+    <EmbeddedResource Include="TrainingJsons\Several Images.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TrainingJsons\Two Images.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="7.0.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2401" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MriBase.App.Base\MriBase.App.Base.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Xfx.Controls">
+      <HintPath>..\..\MriBase.App.Base\ExternalDlls\Xfx.Controls.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\AnimalEditPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Views\AnimalRegistrationPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+</Project>

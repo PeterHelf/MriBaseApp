@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MriBase.App.Base.Custom" 
+             xmlns:views="clr-namespace:MriBase.App.Base.Views" 
+             x:DataType="views:TrainingImageView"
+             x:Class="MriBase.App.Base.Views.TrainingImageView"
+             x:Name="trainingImageView">
+  <ContentView.Content>
+        <Grid x:Name="OuterGrid" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid x:Name="Grid" Grid.Row="1" Grid.Column="1"
+                local:SimplePressedEffect.PressedCommand="{Binding ImageClickCommand, Source={x:Reference trainingImageView}}" 
+                local:SimplePressedEffect.Parameter="{Binding TrainingImage, Source={x:Reference trainingImageView}}"                  
+                VerticalOptions="FillAndExpand"
+                HorizontalOptions="FillAndExpand">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.Effects>
+                    <local:SimplePressedEffect/>
+                </Grid.Effects>
+                <Image Grid.Row="1" Grid.Column="1" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Source="{Binding TrainingImage.Image, Source={x:Reference trainingImageView}}" x:Name="Image"/>
+            </Grid>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

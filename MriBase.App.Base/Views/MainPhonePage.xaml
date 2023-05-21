@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.MainPhonePage"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             xmlns:icon="clr-namespace:MriBase.App.Base.Icon;assembly=MriBase.App.Base"
+             xmlns:views="clr-namespace:MriBase.App.Base.Views;assembly=MriBase.App.Base"
+             android:TabbedPage.ToolbarPlacement="Bottom"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding Title}" FontSize="Title" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+            <ImageButton Source="{Binding AnimalImage}" CornerRadius="10" Clicked="Button_Clicked" Aspect="AspectFill" HeightRequest="50" WidthRequest="50" Margin="0,0,20,0"/>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <!--Pages can be added as references or inline-->
+    <ContentPage Title="{translation:Translate ResViewStatisticsAndTraining_Training}" IconImageSource="{icon:Icon clock}" TabIndex="0"
+             iOS:Page.UseSafeArea="true">
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <views:TrainingSelectionView HorizontalOptions="Fill" Margin="10"/>
+            </ScrollView>
+            <views:AnimalListView Animals="{Binding Animals}" 
+                                  x:Name="popuplayout"
+                                  IsVisible="False"
+                                  Scale="0"
+                                  Margin="10"
+                
+                                  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                                  AbsoluteLayout.LayoutBounds="1,0,0.5,AutoSize"/>
+        </AbsoluteLayout>
+    </ContentPage>
+
+    <ContentPage Title="{translation:Translate ResViewStatisticsAndTraining_Statistics}" IconImageSource="{icon:Icon barChart}" TabIndex="1"
+             iOS:Page.UseSafeArea="true">
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <views:StatisticsView HorizontalOptions="Fill" Margin="10"/>
+            </ScrollView>
+            <views:AnimalListView Animals="{Binding Animals}" 
+                                  x:Name="popuplayout2"
+                                  IsVisible="False"
+                                  Scale="0"
+                                  Margin="10"
+                
+                                  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                                  AbsoluteLayout.LayoutBounds="1,0,0.5,AutoSize"/>
+        </AbsoluteLayout>
+    </ContentPage>
+
+    <ContentPage Title="{translation:Translate ResViewSettings_Settings}" IconImageSource="{icon:Icon cog}" TabIndex="2"
+             iOS:Page.UseSafeArea="true">
+        <AbsoluteLayout>
+            <ScrollView AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <views:SettingsPhoneView HorizontalOptions="Fill" Margin="10"/>
+            </ScrollView>
+            <views:AnimalListView Animals="{Binding Animals}" 
+                                  x:Name="popuplayout3"
+                                  IsVisible="False"
+                                  Scale="0"
+                                  Margin="10"
+                
+                                  AbsoluteLayout.LayoutFlags="PositionProportional,WidthProportional"
+                                  AbsoluteLayout.LayoutBounds="1,0,0.5,AutoSize"/>
+        </AbsoluteLayout>
+    </ContentPage>
+</TabbedPage>

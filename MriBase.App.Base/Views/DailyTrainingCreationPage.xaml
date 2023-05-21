@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             xmlns:converter="clr-namespace:MriBase.App.Base.Converter;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.DailyTrainingCreationPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="FontSize" Value="Medium"/>
+            </Style>
+            <Style TargetType="Entry">
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+            </Style>
+            <converter:EnumLanguageConverter x:Key="EnumLanguageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <ScrollView Grid.Column="1">
+                <StackLayout HorizontalOptions="Fill" VerticalOptions="Center">
+                    <Label Text="{translation:Translate ResViewDailyTrainingCreation_StartTime}"/>
+                    <TimePicker Time="{Binding StartTime}" HorizontalOptions="Center" x:Name="TimePicker"/>
+                    <Label Text="{translation:Translate ResViewDailyTrainingCreation_MinDuration}"/>
+                    <Entry Text="{Binding MinDuration}" Keyboard="Numeric" Placeholder="Min"/>
+                    <Label Text="{translation:Translate ResViewDailyTrainingCreation_MaxDuration}"/>
+                    <Entry Text="{Binding MaxDuration}" Keyboard="Numeric" Placeholder="Max"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="{translation:Translate ResViewDailyTrainingCreation_AnyTraining}" VerticalOptions="CenterAndExpand"/>
+                        <CheckBox IsChecked="{Binding AnyTraining}"/>
+                    </StackLayout>
+
+                    <Label Text="{translation:Translate ResViewDailyTrainingCreation_SpecificTraining}" IsVisible="{Binding TrainingSelectionAvailable}"/>
+                    <Picker Title="{translation:Translate ResViewDailyTrainingCreation_SpecificTraining}" IsVisible="{Binding TrainingSelectionAvailable}" ItemsSource="{Binding AvailableTrainings}" ItemDisplayBinding="{Binding ., Converter={StaticResource EnumLanguageConverter}}" SelectedItem="{Binding SelectedTrainingType}"/>
+
+                    <Label Text="{translation:Translate ResViewDailyTrainingCreation_SelectedAnimal}"/>
+                    <Picker Title="{translation:Translate ResViewDailyTrainingCreation_AnimalPickerTitle}" ItemsSource="{Binding AvailableAnimals}" SelectedItem="{Binding SelectedAnimal}" ItemDisplayBinding="{Binding Name}"/>
+                    <Button Command="{Binding AddTrainingCommand}" Text="{translation:Translate ResViewDailyTrainingCreation_AddTraining}"/>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.FAQPage">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="Fill">
+            <StackLayout BindableLayout.ItemsSource="{Binding FAQs}" Margin="10">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout HorizontalOptions="StartAndExpand" Margin="5,15,5,15">
+                            <Label Text="{Binding Question}" FontAttributes="Bold"/>
+                            <Label Text="{Binding Answer}"/>
+                        </StackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

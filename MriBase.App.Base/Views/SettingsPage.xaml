@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:MriBase.App.Base.Views;assembly=MriBase.App.Base"
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.SettingsPage"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="true">
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{translation:Translate ResViewSettings_Settings}" FontAttributes="Bold" FontSize="40"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+
+            <ImageButton IsEnabled="{Binding LogoutPossible}" IsVisible="{Binding LogoutPossible}" BackgroundColor="Transparent" Source="{Binding LogOutIcon}" WidthRequest="50" HeightRequest="50" HorizontalOptions="Center" VerticalOptions="Start" Command="{Binding LogOutCommand}"/>
+
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollView Grid.Row="1" Grid.Column="1" >
+                <views:SettingsView AboutButtonCommand="{Binding AboutButtonCommand}" LanguageButtonCommand="{Binding LanguageButtonCommand}" VolumeButtonCommand="{Binding VolumeButtonCommand}" DailyTrainingsButtonCommand="{Binding DailyTrainingsButtonCommand}" BluetoothSettingsButtonCommand="{Binding BluetoothSettingsButtonCommand}" TouchscreenCalibrationButtonCommand="{Binding TouchscreenCalibrationButtonCommand}" HorizontalOptions="Fill" x:Name="SettingsView"/>
+            </ScrollView>
+
+            <BoxView Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Fill" HorizontalOptions="Center" WidthRequest="1" Color="Black" Margin="0,30,0,10"/>
+
+            <views:LanguageView Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Fill" x:Name="LanguageView"/>
+            <views:VolumeView Grid.Row="1" Grid.Column="4" VerticalOptions="Center" HorizontalOptions="Fill" x:Name="VolumeView"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

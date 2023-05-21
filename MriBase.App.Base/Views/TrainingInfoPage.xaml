@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mm="clr-namespace:MediaManager.Forms;assembly=MediaManager.Forms" 
+             xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
+             xmlns:views="clr-namespace:MriBase.App.Base.Views"
+             mc:Ignorable="d"
+             x:Class="MriBase.App.Base.Views.TrainingInfoPage"
+             Title="{Binding Training.Name}">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+
+            <!--<Image Grid.Row="1" Source="{Binding Training.Image}" WidthRequest="250" HeightRequest="200" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>-->
+            <!--<MediaElement Grid.Row="1" ShowsPlaybackControls="True" AutoPlay="False" Source="{Binding ExplanationVideoUrl}" />-->
+            <!--<mm:VideoView Grid.Row="0" Margin="20,0,20,0" VideoPlaceholder="{Binding Training.Image}" VideoAspect="AspectFit" AutoPlay="False" ShowControls="True" HorizontalOptions="FillAndExpand" VerticalOptions="Start" Source="{Binding ExplanationVideoUrl}"/>-->
+            <Image Grid.Row="0" Margin="20,10,20,0" Source="{Binding Training.Image}" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Aspect="AspectFit"/>
+            <Button Grid.Row="1" Text="Training starten" BackgroundColor="Green" Command="{Binding StartTrainingCommand}" Margin="20,0,20,0"/>
+
+            <ScrollView Grid.Row="2" Margin="20,15,20,20" >
+                <Label Text="{Binding Training.Description}"/>
+            </ScrollView>
+
+            <StackLayout Grid.Row="3" Margin="20,10,20,30">
+                <Label Text="{translation:Translate ResViewStatisticsAndTraining_Statistics}" FontSize="Medium" FontAttributes="Bold"/>
+                <views:StatisticItemView Statistic="{Binding Statistic}"/>
+            </StackLayout>
+            <views:BusyIndicatorView Grid.RowSpan="4" IsVisible="{Binding IsBusy}" IsBusy="{Binding IsBusy}" BusyText="{Binding BusyText}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
