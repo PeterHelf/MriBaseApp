@@ -35,41 +35,11 @@ namespace MriBase.App.Dog.Droid
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             XfxControls.Init();
 
-            CheckPermissions();
-
             LoadApplication(new App());
 
+            CheckPermissions();
+
             this.touchCalibrationServce = BaseViewModel.Container.Resolve<ITouchscreenCalibrationService>();
-        }
-
-        public void UpdateApp(string uri)
-        {
-            var webClient = new WebClient();
-
-            var downloadPath = Path.Combine(Environment.GetExternalStoragePublicDirectory(Environment.DirectoryDownloads).AbsolutePath, "MriDogApp.apk");
-
-            webClient.DownloadFileCompleted += (s, e) =>
-            {
-                if (e.Error is null)
-                {
-                    if (!PackageManager.CanRequestPackageInstalls())
-                    {
-                        var unknownAppSourceIntent = new Intent()
-                        .SetAction("android.settings.MANAGE_UNKNOWN_APP_SOURCES")
-                        .SetData(Uri.Parse($"package:{AppInfo.PackageName}"));
-                        StartActivity(unknownAppSourceIntent);
-                    }
-                    else
-                    {
-                        InstallPackage(downloadPath);
-                    }
-
-                }
-            };
-
-            var url = new System.Uri(uri);
-
-            webClient.DownloadFileAsync(url, downloadPath);
         }
 
         protected override void OnNewIntent(Intent intent)
@@ -77,22 +47,37 @@ namespace MriBase.App.Dog.Droid
             base.OnNewIntent(intent);
         }
 
-        private void InstallPackage(string downloadPath)
-        {
-            var promptInstall = new Intent(Intent.ActionView).SetDataAndType(FileProvider.GetUriForFile(this, $"{AppInfo.PackageName}.fileprovider", new Java.IO.File(downloadPath)), "application/vnd.android.package-archive");
-            promptInstall.AddFlags(ActivityFlags.ClearTop);
-            promptInstall.AddFlags(ActivityFlags.GrantReadUriPermission);
-            StartActivity(promptInstall);
-        }
-
         private void CheckPermissions()
         {
-            string[] permissions = new[]
+            var configService = BaseViewModel.Container.Resolve<IConfigService>();
+            var useBluetooth = configService.BluetoothEnabled;
+
+            string[] permissions;
+            if (useBluetooth)
             {
-                Manifest.Permission.ReadExternalStorage,
-                Manifest.Permission.WriteExternalStorage,
-                Manifest.Permission.RequestInstallPackages
-            };
+                permissions = new[]
+                {
+                    Manifest.Permission.Bluetooth,
+                    Manifest.Permission.BluetoothAdmin,
+                    Manifest.Permission.BluetoothPrivileged,
+                    Manifest.Permission.AccessCoarseLocation,
+                    Manifest.Permission.AccessFineLocation,
+                    Manifest.Permission.LocationHardware,
+
+                    Manifest.Permission.ReadExternalStorage,
+                    Manifest.Permission.WriteExternalStorage,
+                    Manifest.Permission.RequestInstallPackages
+                };
+            }
+            else
+            {
+                permissions = new[]
+                {
+                    Manifest.Permission.ReadExternalStorage,
+                    Manifest.Permission.WriteExternalStorage,
+                    Manifest.Permission.RequestInstallPackages
+                };
+            }
 
             bool minimumPermissionsGranted = true;
 
