@@ -16,9 +16,6 @@ jobs:
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v1.1
 
-      - name: Build Solution
-        run: msbuild ./MriBase.sln /restore /p:Configuration=Release
-
       - name: Create and Sign the APK
         run: msbuild MriBase.App.Dog\MriBase.App.Dog.Android\MriBase.App.Dog.Android.csproj /t:SignAndroidPackage /p:Configuration=Release /p:OutputPath=bin\Release\
 
