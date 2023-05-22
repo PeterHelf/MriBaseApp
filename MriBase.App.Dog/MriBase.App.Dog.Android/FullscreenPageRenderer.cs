@@ -57,6 +57,10 @@ namespace MriBase.App.Dog.Droid
         protected override void OnDetachedFromWindow()
         {
             activity.Window.DecorView.SystemUiVisibility = (StatusBarVisibility)originalUiOptions;
+
+            var attrs = this.activity.Window.Attributes;
+            attrs.Flags &= ~WindowManagerFlags.Fullscreen;
+            this.activity.Window.Attributes = attrs;
         }
     }
 }
