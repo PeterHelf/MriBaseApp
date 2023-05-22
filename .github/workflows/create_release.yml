@@ -17,7 +17,7 @@ jobs:
         uses: microsoft/setup-msbuild@v1.1
 
       - name: Create and Sign the APK
-        run: msbuild MriBase.App.Dog\MriBase.App.Dog.Android\MriBase.App.Dog.Android.csproj /t:SignAndroidPackage /p:Configuration=Release /p:OutputPath=bin\Release\
+        run: msbuild MriBase.App.Dog\MriBase.App.Dog.Android\MriBase.App.Dog.Android.csproj /restore /t:SignAndroidPackage /p:Configuration=Release /p:OutputPath=bin\Release\
 
       - name: Upload artifact
         uses: actions/upload-artifact@v3
