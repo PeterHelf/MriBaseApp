@@ -31,15 +31,15 @@
                     <Label Text="{translation:Translate ResViewAnimalEdit_AnimalName}" FontAttributes="Bold"/>
                     <Entry Text="{Binding Name}" IsTextPredictionEnabled="False" Placeholder="{translation:Translate ResViewAnimalRegistration_Name}" HorizontalOptions="Fill"/>
 
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{translation:Translate ResViewAnimalEdit_AnimalAge}" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <StackLayout>
+                        <Label Text="{translation:Translate ResViewAnimalEdit_AnimalAge}" FontAttributes="Bold" HorizontalOptions="Start"/>
                         <DatePicker MinimumDate="{Binding MinDate}"
                                 MaximumDate="{Binding MaxDate}"
                                 Date="{Binding SelectedDate}" TabIndex="1"/>
                     </StackLayout>
 
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
-                        <Label Text="{translation:Translate ResViewAnimalEdit_AnimalBreed}" FontAttributes="Bold" HorizontalOptions="Center"/>
+                    <StackLayout HorizontalOptions="Fill">
+                        <Label Text="{translation:Translate ResViewAnimalEdit_AnimalBreed}" FontAttributes="Bold" HorizontalOptions="Start"/>
                         <!--TODO: Lösung nur für Android&iOS, nicht für UWP-->
                         <custom:CustomXfxComboBox x:Name="BreedSelector" HorizontalOptions="FillAndExpand"
                                      Placeholder="{translation:Translate ResViewAnimalRegistration_Breed}"

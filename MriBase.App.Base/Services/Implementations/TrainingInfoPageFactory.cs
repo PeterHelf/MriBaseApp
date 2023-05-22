@@ -12,17 +12,21 @@ namespace MriBase.App.Base.Services.Implementations
         private readonly INavigationService navigationService;
         private readonly IBluetoothService bluetoothService;
         private readonly IAppDataService appDataService;
+        private readonly ITrainingPageSelectionService trainingPageSelectionService;
+        private readonly IConfigService configService;
 
-        public TrainingInfoPageFactory(INavigationService navigationService, IBluetoothService bluetoothService, IAppDataService appDataService)
+        public TrainingInfoPageFactory(INavigationService navigationService, IBluetoothService bluetoothService, IAppDataService appDataService, ITrainingPageSelectionService trainingPageSelectionService, IConfigService configService)
         {
             this.navigationService = navigationService ?? throw new ArgumentNullException(nameof(navigationService));
             this.bluetoothService = bluetoothService ?? throw new ArgumentNullException(nameof(bluetoothService));
             this.appDataService = appDataService ?? throw new ArgumentNullException(nameof(appDataService));
+            this.trainingPageSelectionService = trainingPageSelectionService ?? throw new ArgumentNullException(nameof(trainingPageSelectionService));
+            this.configService = configService ?? throw new ArgumentNullException(nameof(configService));
         }
 
         public TrainingInfoPage CreateInstance(Training training)
         {
-            return new TrainingInfoPage(new TrainingInfoViewModel(training, navigationService, bluetoothService, appDataService));
+            return new TrainingInfoPage(new TrainingInfoViewModel(training, navigationService, bluetoothService, appDataService, trainingPageSelectionService, configService));
         }
     }
 }

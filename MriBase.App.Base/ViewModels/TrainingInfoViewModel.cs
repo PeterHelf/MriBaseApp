@@ -1,4 +1,5 @@
 ﻿using MriBase.App.Base.Bluetooth;
+using MriBase.App.Base.Services.Implementations;
 using MriBase.App.Base.Services.Interfaces;
 using MriBase.App.Base.Views;
 using MriBase.Models.Models;
@@ -19,24 +20,41 @@ namespace MriBase.App.Base.ViewModels
         //TODO: Set url for explanation videos
         public string ExplanationVideoUrl => string.Empty;
 
-        public TrainingInfoViewModel(Training training, INavigationService navigationService, IBluetoothService bluetoothService, IAppDataService appDataService)
+        public TrainingInfoViewModel(Training training, INavigationService navigationService, IBluetoothService bluetoothService, IAppDataService appDataService, ITrainingPageSelectionService trainingPageSelectionService, IConfigService configService)
         {
             this.appDataService = appDataService;
             Training = new TrainingViewModel(training);
             this.Statistic = new TrainingsStatisticViewModel(this.appDataService.SelectedAnimal.Statistics.FirstOrDefault(s => s.Training == training));
 
-            this.StartTrainingCommand = new Command(async () =>
+            if (configService.BluetoothEnabled)
             {
-                this.IsBusy = true;
-                this.BusyText = ResViewTrainings.StartingTraining;
-
-                if (await bluetoothService.StartTrainingOnDevice(training.Id))
+                this.StartTrainingCommand = new Command(async () =>
                 {
-                    await navigationService.NavigateToWithFactoryAsync<BluetoothTrainingPage, Training>(training);
-                }
+                    this.IsBusy = true;
+                    this.BusyText = ResViewTrainings.StartingTraining;
 
-                this.IsBusy = false;
-            });
+                    if (await bluetoothService.StartTrainingOnDevice(training.Id))
+                    {
+                        await navigationService.NavigateToWithFactoryAsync<BluetoothTrainingPage, Training>(training);
+                    }
+
+                    this.IsBusy = false;
+                });
+            }
+            else
+            {
+                this.StartTrainingCommand = new Command(async () =>
+                {
+                    this.IsBusy = true;
+                    this.BusyText = ResViewTrainings.StartingTraining;
+
+                    var trainingPage = trainingPageSelectionService.GetTrainingPage(training);
+
+                    await navigationService.NavigateToAsync(trainingPage);
+
+                    this.IsBusy = false;
+                });
+            }
         }
 
         public Command StartTrainingCommand { get; set; }
