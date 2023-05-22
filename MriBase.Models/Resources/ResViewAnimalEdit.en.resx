@@ -130,10 +130,10 @@
     <value>Dog's name: </value>
   </data>
   <data name="ChangesSaved" xml:space="preserve">
-    <value>Changes saved</value>
+    <value>Saved</value>
   </data>
   <data name="ChangesSavedText" xml:space="preserve">
-    <value>Changes were saved on the server</value>
+    <value>Changes saved</value>
   </data>
   <data name="BirdAge" xml:space="preserve">
     <value>Bird's age: </value>
@@ -170,5 +170,8 @@
   </data>
   <data name="ServerUnavailableTitle" xml:space="preserve">
     <value>Server unreachable</value>
+  </data>
+  <data name="AnimalBirthday" xml:space="preserve">
+    <value>Birthday:</value>
   </data>
 </root>

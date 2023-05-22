@@ -120,6 +120,9 @@
   <data name="AnimalAge" xml:space="preserve">
     <value>Alter des Hundes: </value>
   </data>
+  <data name="AnimalBirthday" xml:space="preserve">
+    <value>Geburtstag:</value>
+  </data>
   <data name="AnimalBreed" xml:space="preserve">
     <value>Hunderasse: </value>
   </data>
@@ -139,10 +142,10 @@
     <value>Name des Vogels: </value>
   </data>
   <data name="ChangesSaved" xml:space="preserve">
-    <value>Änderungen gespeichert</value>
+    <value>Gespeichert</value>
   </data>
   <data name="ChangesSavedText" xml:space="preserve">
-    <value>Änderungen am Server gespeichert</value>
+    <value>Änderungen gespeichert</value>
   </data>
   <data name="NameEmptyErrorText" xml:space="preserve">
     <value>Das Namensfeld darf nicht leer sein</value>

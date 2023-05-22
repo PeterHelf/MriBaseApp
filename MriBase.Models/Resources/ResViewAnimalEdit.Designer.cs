@@ -19,7 +19,7 @@ namespace MriBase.Models.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ResViewAnimalEdit {
@@ -66,6 +66,15 @@ namespace MriBase.Models.Resources {
         public static string AnimalAge {
             get {
                 return ResourceManager.GetString("AnimalAge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Geburtstag:.
+        /// </summary>
+        public static string AnimalBirthday {
+            get {
+                return ResourceManager.GetString("AnimalBirthday", resourceCulture);
             }
         }
         
@@ -124,7 +133,7 @@ namespace MriBase.Models.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Änderungen gespeichert.
+        ///   Looks up a localized string similar to Gespeichert.
         /// </summary>
         public static string ChangesSaved {
             get {
@@ -133,7 +142,7 @@ namespace MriBase.Models.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Änderungen am Server gespeichert.
+        ///   Looks up a localized string similar to Änderungen gespeichert.
         /// </summary>
         public static string ChangesSavedText {
             get {

@@ -32,7 +32,7 @@
                     <Entry Text="{Binding Name}" IsTextPredictionEnabled="False" Placeholder="{translation:Translate ResViewAnimalRegistration_Name}" HorizontalOptions="Fill"/>
 
                     <StackLayout>
-                        <Label Text="{translation:Translate ResViewAnimalEdit_AnimalAge}" FontAttributes="Bold" HorizontalOptions="Start"/>
+                        <Label Text="{translation:Translate ResViewAnimalEdit_AnimalBirthday}" FontAttributes="Bold" HorizontalOptions="Start"/>
                         <DatePicker MinimumDate="{Binding MinDate}"
                                 MaximumDate="{Binding MaxDate}"
                                 Date="{Binding SelectedDate}" TabIndex="1"/>
