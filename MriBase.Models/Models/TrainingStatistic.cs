@@ -70,8 +70,6 @@ namespace MriBase.Models.Models
             }
         }
 
-        public string DurationOfTraining => this.Training is null ? null : $"~{this.Training?.SessionSettings?.NumberOfTrials * 10}";
-
         public Training Training
         {
             get => this.training;
