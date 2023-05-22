@@ -13,7 +13,7 @@ namespace MriBase.App.Base.ViewModels
         private readonly INavigationService navigationService;
         private readonly IAppDataService appDataService;
         private readonly ILocalSaveService localSaveService;
-        private bool _anyTraining;
+        private bool anyTraining;
         public TimeSpan StartTime { get; set; }
 
         public int? MinDuration { get; set; }
@@ -22,10 +22,10 @@ namespace MriBase.App.Base.ViewModels
 
         public bool AnyTraining
         {
-            get => _anyTraining;
+            get => this.anyTraining;
             set
             {
-                _anyTraining = value;
+                this.anyTraining = value;
                 this.OnPropertyChanged();
                 this.OnPropertyChanged(nameof(this.TrainingSelectionAvailable));
             }

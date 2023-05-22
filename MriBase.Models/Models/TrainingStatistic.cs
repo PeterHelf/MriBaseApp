@@ -9,12 +9,12 @@ namespace MriBase.Models.Models
     [Serializable]
     public class TrainingStatistic : INotifyPropertyChanged
     {
-        private int _timesPlayed;
-        private int _numberOfErrors;
-        private int _bestResult;
+        private int timesPlayed;
+        private int numberOfErrors;
+        private int bestResult;
 
         [NonSerialized]
-        private Training _training;
+        private Training training;
 
         public TrainingStatistic(int trainingId)
         {
@@ -23,7 +23,7 @@ namespace MriBase.Models.Models
 
         public TrainingStatistic(Training training)
         {
-            Training = training;
+            this.Training = training;
             this.TrainingId = training.Id;
         }
 
@@ -42,30 +42,30 @@ namespace MriBase.Models.Models
 
         public int TimesPlayed
         {
-            get => _timesPlayed;
+            get => this.timesPlayed;
             set
             {
-                _timesPlayed = value;
+                this.timesPlayed = value;
                 this.OnPropertyChanged();
             }
         }
 
         public int NumberOfErrors
         {
-            get => _numberOfErrors;
+            get => this.numberOfErrors;
             set
             {
-                _numberOfErrors = value;
+                this.numberOfErrors = value;
                 this.OnPropertyChanged();
             }
         }
 
         public int BestResult
         {
-            get => _bestResult;
+            get => this.bestResult;
             set
             {
-                _bestResult = value;
+                this.bestResult = value;
                 this.OnPropertyChanged();
             }
         }
@@ -74,8 +74,8 @@ namespace MriBase.Models.Models
 
         public Training Training
         {
-            get => _training;
-            set => _training = value;
+            get => this.training;
+            set => this.training = value;
         }
 
         [field: NonSerialized]
@@ -83,7 +83,7 @@ namespace MriBase.Models.Models
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
