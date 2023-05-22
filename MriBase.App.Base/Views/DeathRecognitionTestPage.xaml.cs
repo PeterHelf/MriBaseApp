@@ -15,11 +15,5 @@ namespace MriBase.App.Base.Views
         {
             InitializeComponent();
         }
-
-        protected override void OnDisappearing()
-        {
-            this.ViewModel.StopSession();
-            base.OnDisappearing();
-        }
     }
 }

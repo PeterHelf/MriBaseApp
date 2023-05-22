@@ -29,6 +29,7 @@ namespace MriBase.App.Base.Views
         {
             DependencyService.Get<IStatusBar>().ShowStatusBar();
             this.ViewModel.TimerCancellationTokenSource.Cancel();
+            this.ViewModel.StopSession();
             base.OnDisappearing();
         }
 
