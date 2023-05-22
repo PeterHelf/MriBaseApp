@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:conv="clr-namespace:MriBase.App.Base.Converter"
              xmlns:translation="clr-namespace:MriBase.App.Base.Translation;assembly=MriBase.App.Base"
              mc:Ignorable="d"
              x:Class="MriBase.App.Base.Views.DailyTrainingsPage">
@@ -12,6 +13,7 @@
                 <Setter Property="VerticalOptions" Value="Center" />
             </Style>
         </ResourceDictionary>
+        <conv:BoolToInvisibleConverter x:Key="BoolToInvisibleConverter" />
     </ContentPage.Resources>
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="{Binding InfoIcon}" Text="Info" Clicked="InfoButtonClicked"/>
@@ -43,35 +45,26 @@
                                 <Label>
                                     <Label.FormattedText>
                                         <FormattedString>
-                                            <Span Text="{translation:Translate ResViewDailyTrainings_MinDuration}"/>
-                                            <Span Text="{Binding MinDuration}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <BoxView Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
-                                            <Span Text="{translation:Translate ResViewDailyTrainings_MaxDuration}"/>
-                                            <Span Text="{Binding MaxDuration}" />
-                                        </FormattedString>
-                                    </Label.FormattedText>
-                                </Label>
-                                <BoxView Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
-                                <Label>
-                                    <Label.FormattedText>
-                                        <FormattedString>
                                             <Span Text="{translation:Translate ResViewDailyTrainings_AnimalName}"/>
                                             <Span Text="{Binding AnimalName}" />
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>
-                                <BoxView Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
+                                <BoxView IsVisible="{Binding AnyTraining}" Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
                                 <Label IsVisible="{Binding AnyTraining}">
                                     <Label.FormattedText>
                                         <FormattedString>
                                             <Span Text="{translation:Translate ResViewDailyTrainings_Training}"/>
                                             <Span Text="{translation:Translate ResViewDailyTrainings_AnyTraining}"/>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <BoxView IsVisible="{Binding AnyTraining, Converter={StaticResource BoolToInvisibleConverter}}" Color="Black" WidthRequest="1" HorizontalOptions="Fill" Margin="10"></BoxView>
+                                <Label IsVisible="{Binding AnyTraining, Converter={StaticResource BoolToInvisibleConverter}}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span Text="{translation:Translate ResViewDailyTrainings_Training}"/>
+                                            <Span Text="{Binding TrainingName}"/>
                                         </FormattedString>
                                     </Label.FormattedText>
                                 </Label>

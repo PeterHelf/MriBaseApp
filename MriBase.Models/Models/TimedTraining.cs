@@ -10,27 +10,21 @@ namespace MriBase.Models.Models
     {
         public TimeSpan StartTime { get; set; }
 
-        public int MinDuration { get; set; }
-
-        public int MaxDuration { get; set; }
-
         public bool AnyTraining { get; set; }
 
-        public TrainingType SpecificTrainingType { get; set; }
+        public int SpecificTrainingId { get; set; }
 
-        public IAnimalInformation Animal { get; set; }
+        public int AnimalId { get; set; }
 
         [NonSerialized]
         private Timer timer;
 
-        public TimedTraining(int minDuration, int maxDuration, TimeSpan time, bool anyTraining, TrainingType specificTrainingType, IAnimalInformation animal)
+        public TimedTraining(TimeSpan time, bool anyTraining, int specificTrainingId, int animalId)
         {
-            MinDuration = minDuration;
-            MaxDuration = maxDuration;
             StartTime = time;
             AnyTraining = anyTraining;
-            SpecificTrainingType = specificTrainingType;
-            Animal = animal ?? throw new ArgumentNullException(nameof(animal));
+            SpecificTrainingId = specificTrainingId;
+            AnimalId = animalId;
         }
 
         public void StopTimer()

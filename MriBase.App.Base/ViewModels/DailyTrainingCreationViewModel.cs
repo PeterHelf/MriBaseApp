@@ -16,10 +16,6 @@ namespace MriBase.App.Base.ViewModels
         private bool anyTraining;
         public TimeSpan StartTime { get; set; }
 
-        public int? MinDuration { get; set; }
-
-        public int? MaxDuration { get; set; }
-
         public bool AnyTraining
         {
             get => this.anyTraining;
@@ -33,11 +29,11 @@ namespace MriBase.App.Base.ViewModels
 
         public bool TrainingSelectionAvailable => !AnyTraining;
 
-        public TrainingType SelectedTrainingType { get; set; }
+        public Training SelectedTraining { get; set; }
 
         public AnimalInformationViewModel SelectedAnimal { get; set; }
 
-        public IEnumerable<TrainingType> AvailableTrainings => Enum.GetValues(typeof(TrainingType)).Cast<TrainingType>();
+        public IEnumerable<Training> AvailableTrainings => appDataService.Trainings.Result;
 
         public List<AnimalInformationViewModel> AvailableAnimals => this.appDataService.Animals.Select(a => new AnimalInformationViewModel(a)).ToList();
 
@@ -48,12 +44,13 @@ namespace MriBase.App.Base.ViewModels
             this.localSaveService = localSaveService;
             this.AddTrainingCommand = new Command(async () =>
             {
-                if (this.MinDuration.HasValue && this.MaxDuration.HasValue && !(this.SelectedAnimal is null))
+                if (!(this.SelectedAnimal is null))
                 {
-                    var training = new TimedTraining(this.MinDuration.Value, this.MaxDuration.Value, this.StartTime, this.AnyTraining,
-                    this.SelectedTrainingType, this.SelectedAnimal.AnimalInformation);
+                    var training = new TimedTraining(this.StartTime, this.AnyTraining,
+                    this.SelectedTraining?.Id ?? 0, this.SelectedAnimal.AnimalInformation.Id);
                     this.appDataService.LogedInUser.DailyTrainings.Add(training);
                     timedTrainingsService.StartTraining(training);
+                    await this.localSaveService.SaveUsers();
                     await this.localSaveService.SaveAnimals();
                     await this.navigationService.ReturnToLastPage();
                 }

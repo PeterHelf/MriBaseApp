@@ -145,6 +145,7 @@
     <value>Training: </value>
   </data>
   <data name="TrainingInfo" xml:space="preserve">
-    <value>Infos zu den täglichen Trainings</value>
+    <value>Experimentelle Funktion
+Hier kann ein automatischer Trainingsplan erstellt weren. Erstellte Trainings werden automatisch täglich zur spezifizierten Uhrzeit gestartet. Die App muss aktiv sein um ein Training zu starten.</value>
   </data>
 </root>

@@ -37,16 +37,14 @@ namespace MriBase.App.Base.Services.Implementations
             var trainings = await this.appDataService.Trainings;
 
             var possibleTrainings = trainings.Where(t =>
-                t.TrainingTrials.Count * 10 >= training.MinDuration &&
-                t.TrainingTrials.Count * 10 <= training.MaxDuration &&
-                (training.AnyTraining || t.TrainingType == training.SpecificTrainingType)).ToArray();
+                (training.AnyTraining || t.Id == training.SpecificTrainingId)).ToArray();
 
             if (!possibleTrainings.Any())
             {
                 return;
             }
 
-            appDataService.SelectedAnimal = training.Animal;
+            appDataService.SelectedAnimal = this.appDataService.Animals.First(a => a.Id == training.AnimalId);
 
             int index = rnd.Next(possibleTrainings.Length);
 

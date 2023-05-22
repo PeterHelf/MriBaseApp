@@ -19,7 +19,7 @@ namespace MriBase.Models.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class ResViewDailyTrainings {
@@ -142,7 +142,8 @@ namespace MriBase.Models.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Infos zu den täglichen Trainings.
+        ///   Looks up a localized string similar to Experimentelle Funktion
+        ///Hier kann ein automatischer Trainingsplan erstellt weren. Erstellte Trainings werden automatisch täglich zur spezifizierten Uhrzeit gestartet. Die App muss aktiv sein um ein Training zu starten..
         /// </summary>
         public static string TrainingInfo {
             get {

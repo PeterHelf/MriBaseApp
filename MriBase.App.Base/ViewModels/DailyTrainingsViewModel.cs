@@ -15,7 +15,7 @@ namespace MriBase.App.Base.ViewModels
         private readonly ILocalSaveService localSaveService;
         private readonly IImageRecourceService imageRecourceService;
 
-        public IEnumerable<TimedTrainingsViewModel> ActiveDailyTrainings => this.appDataService.LogedInUser.DailyTrainings.Select(t => new TimedTrainingsViewModel(t));
+        public IEnumerable<TimedTrainingsViewModel> ActiveDailyTrainings => this.appDataService.LogedInUser.DailyTrainings.Select(t => new TimedTrainingsViewModel(t, appDataService));
 
         public ImageSource InfoIcon => ImageSource.FromStream(() => new MemoryStream(imageRecourceService.GetImage("infoIcon.png")));
 
@@ -33,6 +33,7 @@ namespace MriBase.App.Base.ViewModels
                 training?.TimedTraining.StopTimer();
                 this.appDataService.LogedInUser.DailyTrainings.Remove(training.TimedTraining);
                 this.OnPropertyChanged(nameof(this.ActiveDailyTrainings));
+                await this.localSaveService.SaveUsers();
                 await this.localSaveService.SaveAnimals();
             });
         }

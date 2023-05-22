@@ -16,7 +16,6 @@
             <Style TargetType="Entry">
                 <Setter Property="HorizontalOptions" Value="Fill"/>
             </Style>
-            <converter:EnumLanguageConverter x:Key="EnumLanguageConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -31,17 +30,13 @@
                 <StackLayout HorizontalOptions="Fill" VerticalOptions="Center">
                     <Label Text="{translation:Translate ResViewDailyTrainingCreation_StartTime}"/>
                     <TimePicker Time="{Binding StartTime}" HorizontalOptions="Center" x:Name="TimePicker"/>
-                    <Label Text="{translation:Translate ResViewDailyTrainingCreation_MinDuration}"/>
-                    <Entry Text="{Binding MinDuration}" Keyboard="Numeric" Placeholder="Min"/>
-                    <Label Text="{translation:Translate ResViewDailyTrainingCreation_MaxDuration}"/>
-                    <Entry Text="{Binding MaxDuration}" Keyboard="Numeric" Placeholder="Max"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                         <Label Text="{translation:Translate ResViewDailyTrainingCreation_AnyTraining}" VerticalOptions="CenterAndExpand"/>
                         <CheckBox IsChecked="{Binding AnyTraining}"/>
                     </StackLayout>
 
                     <Label Text="{translation:Translate ResViewDailyTrainingCreation_SpecificTraining}" IsVisible="{Binding TrainingSelectionAvailable}"/>
-                    <Picker Title="{translation:Translate ResViewDailyTrainingCreation_SpecificTraining}" IsVisible="{Binding TrainingSelectionAvailable}" ItemsSource="{Binding AvailableTrainings}" ItemDisplayBinding="{Binding ., Converter={StaticResource EnumLanguageConverter}}" SelectedItem="{Binding SelectedTrainingType}"/>
+                    <Picker Title="{translation:Translate ResViewDailyTrainingCreation_SpecificTraining}" IsVisible="{Binding TrainingSelectionAvailable}" ItemsSource="{Binding AvailableTrainings}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedTraining}"/>
 
                     <Label Text="{translation:Translate ResViewDailyTrainingCreation_SelectedAnimal}"/>
                     <Picker Title="{translation:Translate ResViewDailyTrainingCreation_AnimalPickerTitle}" ItemsSource="{Binding AvailableAnimals}" SelectedItem="{Binding SelectedAnimal}" ItemDisplayBinding="{Binding Name}"/>
