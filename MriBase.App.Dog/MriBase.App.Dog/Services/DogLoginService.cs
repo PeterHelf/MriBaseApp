@@ -29,7 +29,7 @@ namespace MriBase.App.Dog.Services.Implementations
 
         public async Task<LoginError> LoginOffline(string userName, string passwordHash)
         {
-            await this.localSaveService.LoadAnimalsTask;
+            await this.localSaveService.LoadUsersTask;
             this.appDataService.LogedInUser = this.localSaveService.RememberedUsers.FirstOrDefault(u => u.UserName == userName && u.Password == passwordHash);
 
             if (this.appDataService.LogedInUser is null)
