@@ -4,7 +4,7 @@ Using the MriBaseApp allows users to conduct some of the tests of the [Clever Do
 
 ## Installation
 
-The app can be installed on Android devices using the apk file provided in the [latest release](/releases/latest). Download the file directly on your Android device or download it to your computer and transfer it to the device.
+The app can be installed on Android devices using the apk file provided in the [latest release](https://github.com/PeterHelf/MriBaseApp/releases/latest/download/MriDogApp.apk). Download the file directly on your Android device or download it to your computer and transfer it to the device.
 
 The app has been designed for tablets. These have a large enough touchscreen size for dogs to interact with.
 
